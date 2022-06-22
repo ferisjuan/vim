@@ -1,3 +1,4 @@
+  -- if client.server_capabilities.document_highlight then
 local opts = { noremap = true, silent = true }
 
 local term_opts = { silent = true }
@@ -34,8 +35,8 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Naviagate buffers
--- keymap("n", "<S-l>", ":bnext<CR>", opts)
--- keymap("n", "<S-h>", ":bprevious<CR>", opts)
+keymap("n", "<S-l>", ":bnext<CR>", opts)
+keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- Move text up and down
 keymap("n", "<A-j>", "<Esc>:m .+1<CR>==gi", opts)
@@ -62,3 +63,25 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
+-- Nvim Tree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
+
+-- Telescope
+keymap("n", "<leader>ff", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fp", ":Telescope projects<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+
+-- LSP
+keymap("n", "<leader>lf", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+keymap("n", "<leader>li", "<cmd>LspInfo<CR>", opts)
+keymap("n", "<leader>lI", "<cmd>LspInstallInfo<CR>", opts)
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+keymap("n", "<leader>ls", "<cmd>Telescope lsp_dynamic_workspace_symbols<CR>", opts)
+keymap("n", "<leader>lq", "<cmd>Telescope quickfix<CR>", opts)
+keymap("n", "<leader>lj", "<cmd>lua vim.diagnostic.goto_next({buffer=0})<CR>", opts)
+keymap("n", "<leader>lk", "<cmd>lua vim.diagnostic.goto_prev({buffer=0})<CR>", opts)
+keymap("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", opts)
+
+-- Git
+keymap("n", "<leader>gg", "<cmd>lua _LAZYGIT_TOGGLE()<CR>", opts)
